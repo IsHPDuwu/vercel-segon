@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/paintboard/(.*)",
       "dest": "https://www.oi-search.com/$1"
     }
   ]
