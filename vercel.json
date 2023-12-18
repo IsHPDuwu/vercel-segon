@@ -6,7 +6,7 @@
     },
     {
       "src": "/status",
-      "dest": "https://www.bytedig.com/api/mix/http-status/$1"
+      "dest": "https://www.bytedig.com/api/mix/http-status"
     }
   ]
 }
