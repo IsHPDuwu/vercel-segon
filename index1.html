@@ -9,14 +9,8 @@
   <script>
       // 获取显示内容的元素  
       // 创建请求数据  
-      const data =  `--WebKitFormBoundaryCoTVA3QCxAk4om77  
-Content-Disposition: form-data; name="url"  
-  
-https://pbdv.ishpduwu.link/status  
---WebKitFormBoundaryCoTVA3QCxAk4om77--`//= {  
-      //   url: 'https://www.oi-search.com/paintboard'
-      // };  
-        
+      let data = new FormData();
+      data.append("url","https://www.oi-search.com/paintboard")
       // 创建fetch对象  
       const request = new Request('https://pbdv.ishpduwu.link/status', {  
         method: 'POST', // 设置请求方法为POST  
