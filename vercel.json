@@ -1,4 +1,7 @@
 {
+  "redirects": [
+      { "from": "/paintboard", "to": "/", "statusCode": 301 }
+  ],
   "routes": [
     {
       "src": "/paintboard/(.*)",
