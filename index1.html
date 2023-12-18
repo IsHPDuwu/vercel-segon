@@ -9,9 +9,13 @@
   <script>
       // 获取显示内容的元素  
       // 创建请求数据  
-      const data = {  
-        url: 'https://www.oi-search.com/paintboard'
-      };  
+      const data =  `--WebKitFormBoundaryCoTVA3QCxAk4om77  
+Content-Disposition: form-data; name="url"  
+  
+https://pbdv.ishpduwu.link/status  
+--WebKitFormBoundaryCoTVA3QCxAk4om77--`//= {  
+      //   url: 'https://www.oi-search.com/paintboard'
+      // };  
         
       // 创建fetch对象  
       const request = new Request('https://pbdv.ishpduwu.link/status', {  
@@ -19,7 +23,7 @@
         headers: new Headers({  
           'Content-Type': 'application/json' // 设置请求头为JSON类型  
         }),  
-        body: JSON.stringify(data) // 将请求数据转换为JSON字符串并设置请求体  
+        body: data // 将请求数据转换为JSON字符串并设置请求体  
       });  
         
       // 使用fetch API获取"connection"中的内容  
