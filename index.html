@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
     <title>LS Paintboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/amazeui@2/dist/css/amazeui.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    <script src="https://pbdv.ishpduwu.link/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1/jquery-ui.min.js"></script>
+    <script src="https://pbdv.ishpduwu.link/jquery-ui.min.js"></script>
     <style>
         .about {
             background: #fff;
@@ -102,6 +102,9 @@
                     </p>
                 </div>
                 <div class="am-u-lg-12">
+                    <p>
+                        绘版状态： <span id="status-pbd"></span>
+                    </p>
                     <p>
                         活动时间: <span id="activity-time-start"></span> ~ <span id="activity-time-end"></span> <span
                             id="activity-reminder"></span><br>
@@ -322,6 +325,9 @@
 
     function initialPaint() {
         console.log(0)
+        $.get("/result", function (resp) {
+            $('#result-pbd').html(resp.result);
+        });
         $.get("/paintboard/board", function (resp) {
             resp.split('\n').map(function (colorStr, x) {
                 for(let i = 0; i < 600; i++){
