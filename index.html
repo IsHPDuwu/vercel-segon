@@ -324,8 +324,8 @@
 
     function initialPaint() {
         console.log(0)
-        $.get("/result", function (resp) {
-            $('#result-pbd').html(resp.result);
+        $.get("/status", function (resp) {
+            $('#status-pbd').html(resp.status);
         });
         $.get("/paintboard/board", function (resp) {
             resp.split('\n').map(function (colorStr, x) {
