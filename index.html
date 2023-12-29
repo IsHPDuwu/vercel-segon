@@ -325,7 +325,7 @@
     function initialPaint() {
         console.log(0)
         $.get("/status", function (resp) {
-            $('#status-pbd').html(resp.result);
+            $('#status-pbd').html(resp);
         });
         $.get("/paintboard/board", function (resp) {
             resp.split('\n').map(function (colorStr, x) {
