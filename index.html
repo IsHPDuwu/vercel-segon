@@ -336,55 +336,23 @@
             $('#status-pbd').html(resp);
         });
         $.get("/paintboard/board", function (resp) {
-            resp.split('\n').map(function (colorStr, x) {
-                for(let i = 0; i < 600; i++){
-                    update(i, x, "#" + colorStr.slice(i*6, i*6+6))
+                for(let i=0;i<1800000;i+=3)
+                {
+                    update(parseInt((i/3) % 600), parseInt((i/3)/600), "#" + resp[i].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0'));
+                    // console.log("#" + resp[i].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0'));
+                    // console.log(parseInt((i/3) % 600), parseInt((i/3)/600))
                 }
+                // console.log(1)
+                // resp.split('\n').map(function (colorStr, x) {
+                //     for (let i = 0; i < 600; i++) {
+                        
+                //     }
+                // });
+                $('#title').text('LS（仿洛谷）冬日绘板');
             });
-            $('#title').text('LS（仿洛谷）冬日绘板');
-        });
     }
 
-    var ws = null;
-    function connectWs() {
-        try {
-            ws = new WebSocket('wss://www.oi-search.com:11451/paintboard/ws');
-        } catch (e) {
-            alert("无法连接追踪服务器");
-            return;
-        }
-        ws.binaryType = "arraybuffer";
-        ws.onopen = function () {
-            const message = new Uint8Array([0xff]);
-            ws.send(message);
-        };
-
-        ws.onmessage = function (event) {
-            const raw_message = new Uint8Array(event.data);
-            const [type, data] = [raw_message[0], raw_message.slice(1)];
-            switch (type){
-                case 0xfa: {
-                    const x = data[1] * 256 + data[0];
-                    const y = data[3] * 256 + data[2];
-                    const colorR = data[4];
-                    const colorG = data[5];
-                    const colorB = data[6];
-                    update(y, x, "#" + colorR.toString(16) + colorG.toString(16) + colorB.toString(16));
-                    break;
-                }
-                case 0xfc: {
-                    initialPaint();
-                    break;
-                }
-                case 0xfd: {
-                    initialPaint();
-                    break;
-                }
-            }
-        };
-    }
-
-    connectWs();
+    window.setInterval(initialPaint,10000);
 
     (function () {
         $('#activity-time-start').html(getDateTime(activityStartTime, false));
