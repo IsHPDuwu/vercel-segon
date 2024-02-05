@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/paintboard/(.*)",
-      "dest": "http://pbdy.ishpduwu.link/paintboard/$1"
+      "dest": "http://49.232.29.111/paintboard/$1"
     },
     {
       "src": "/status",
