@@ -241,7 +241,7 @@
             uid: document.getElementById('uid').value.toString(),
             paste: document.getElementById('paste').value
         }, function (resp) {
-            if(resp[0].charCodeAt(0)!=='\x01')
+            if(resp[0].charCodeAt(0)!==1)
             {
             // if (resp.status !== 200) {
                 alert(resp[0].charCodeAt(0).toString(16))
