@@ -337,7 +337,7 @@
         $.get("/paintboard/board", function (resp) {
                 for(let i=0;i<1800000;i+=3)
                 {
-                    update(parseInt((i/3) % 600), parseInt((i/3)/600), "#" + resp[i].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0'));
+                    update(parseInt((i/3) % 600), parseInt((i/3)/600), "#" + resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+3].charCodeAt(0).toString(16).padStart(2,'0'));
                     // console.log("#" + resp[i].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0'));
                     // console.log(parseInt((i/3) % 600), parseInt((i/3)/600))
                 }
