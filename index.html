@@ -329,12 +329,11 @@
     }
 
     getCountDown(lasttime + timelimit);
-
-    function initialPaint() {
-        console.log(0)
-        $.get("/status", function (resp) {
+    $.get("/status", function (resp) {
             $('#status-pbd').html(resp);
         });
+    function initialPaint() {
+        console.log(0)
         $.get("/paintboard/board", function (resp) {
                 for(let i=0;i<1800000;i+=3)
                 {
