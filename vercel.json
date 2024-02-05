@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/paintboard/(.*)",
-      "dest": "http://desktop-cf.ishpduwu.link/paintboard/$1"
+      "dest": "http://pbdy.ishpduwu.link/paintboard/$1"
     },
     {
       "src": "/status",
