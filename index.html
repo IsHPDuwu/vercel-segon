@@ -244,7 +244,7 @@
             if(resp[0].charCodeAt(0)!=='\x01')
             {
             // if (resp.status !== 200) {
-                alert(resp.data)
+                alert(resp[0].charCodeAt(0).toString(16))
             } else {
                 document.getElementById('token').value = resp.slice(1)//resp.data;
             }
