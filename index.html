@@ -214,14 +214,14 @@
             uid: document.getElementById('uid').value.toString(),
             token: document.getElementById('token').value
         }, function (resp) {
-            if(resp[0].charCodeAt(0)!==1)
-            {
-            // if (resp.status !== 200) {
-                alert(resp[0].charCodeAt(0).toString(16))
-            } else {
-                lasttime = (new Date()) / 1000;
-                getCountDown(lasttime + timelimit);
-            }
+            // if(resp[0].charCodeAt(0)!==1)
+            // {
+            // // if (resp.status !== 200) {
+            //     alert(resp[0].charCodeAt(0).toString(16))
+            // } else {
+            //     lasttime = (new Date()) / 1000;
+            //     getCountDown(lasttime + timelimit);
+            // }
         });
     })
     $('#mycanvas').bind('mousemove', function() {
