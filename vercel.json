@@ -1,12 +1,6 @@
 {
-  "routes": [
-    {
-      "src": "/paintboard/(.*)",
-      "dest": "http://101.42.5.87/paintboard/$1"
-    },
-    {
-      "src": "/status",
-      "dest": "https://pbdss.ishpduwu.link"
-    }
+  "redirects": [
+    { "source": "/paintboard/boardimg", "destination": "/paintboard/boardimg/img.png", "permanent": false },
+    { "source": "/paintboard/boardimg/", "destination": "/paintboard/boardimg/img.png", "permanent": false}
   ]
 }
