@@ -1,6 +1,10 @@
 {
   "redirects": [
     { "source": "/paintboard/boardimg", "destination": "/paintboard/boardimg/img.png", "permanent": false },
-    { "source": "/paintboard/boardimg/", "destination": "/paintboard/boardimg/img.png", "permanent": false}
+    { "source": "/paintboard/boardimg/", "destination": "/paintboard/boardimg/img.png", "permanent": false},
+    { "source": "/paintboard/cute", "destination": "/paintboard/cute/img.png", "permanent": false},
+    { "source": "/paintboard/cute/", "destination": "/paintboard/cute/img.png", "permanent": false},
+    { "source": "/paintboard/areyousureheiscute", "destination": "/paintboard/areyousureheiscute/img.png", "permanent": false},
+    { "source": "/paintboard/areyousureheiscute/", "destination": "/paintboard/areyousureheiscute/img.png", "permanent": false}
   ]
 }
