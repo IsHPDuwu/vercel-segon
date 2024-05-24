@@ -246,7 +246,7 @@
             if (resp.status !== 200) {
                 alert(resp.data)
             } else {
-                document.getElementById('token').value = resp.data;
+                document.getElementById('token').value = resp.data.token;
             }
         });
     });
