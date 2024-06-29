@@ -354,7 +354,7 @@
     }
 
     window.setInterval(initialPaint,10000);
-
+    initialPaint()
     (function () {
         $('#activity-time-start').html(getDateTime(activityStartTime, false));
         $('#activity-time-end').html(getDateTime(activityEndTime, true));
