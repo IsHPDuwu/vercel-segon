@@ -7,9 +7,9 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
     <title>LS Paintboard</title>
-    <link rel="stylesheet" href="https://pbdv.ishpduwu.link/amazeui.min.css">
-    <script src="https://pbdv.ishpduwu.link/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://pbdv.ishpduwu.link/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://pbdv.uwuwu.us.kg/amazeui.min.css">
+    <script src="https://pbdv.uwuwu.us.kg/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://pbdv.uwuwu.us.kg/jquery-ui.min.js"></script>
     <style>
         .about {
             background: #fff;
@@ -89,7 +89,7 @@
                         var videoElement = document.getElementById('videoElement');
                         var flvPlayer = flvjs.createPlayer({
                             type: 'flv',
-                            url: 'https://live.ishpduwu.link/7001/live/live.flv'
+                            url: 'https://live.uwuwu.us.kg/7001/live/live.flv'
                         });
                         flvPlayer.attachMediaElement(videoElement);
                         flvPlayer.load();
@@ -131,8 +131,8 @@
                     </p>
                     <p>禁止绘制违反法律、社会公德的图形，否则将被清除且上报网警。请大家组团时不要分享自己的 cookie，而是使用分享 Token 这种更安全的方式。分享 cookie
                         等同于分享账号，他人可以使用您的 cookie 在洛谷以您的名义进行任何操作。</p>
-                    <p>本页面部分来源于<a href="https://www.luogu.com.cnhttps://pbd.ishpduwu.link/paintboard" target="_blank">官方绘板页面</a>。</p>
-                    <img src="https://pbdv.ishpduwu.link/liucang.jpg" alt="cang">
+                    <p>本页面部分来源于<a href="https://www.luogu.com.cnhttps://pbd.uwuwu.us.kg/paintboard" target="_blank">官方绘板页面</a>。</p>
+                    <img src="https://pbdv.uwuwu.us.kg/liucang.jpg" alt="cang">
                 </div>
             </div>
         </div>
@@ -218,7 +218,7 @@
         localStorage.setItem('uid',document.getElementById('uid').value.toString())
         var x = parseInt(event.offsetX / scale);
         var y = parseInt(event.offsetY / scale);
-        $.post("https://pbd.ishpduwu.link/paintboard/paint", {
+        $.post("https://pbd.uwuwu.us.kg/paintboard/paint", {
             x: x,
             y: y,
             color: nowColor.slice(1,7),
@@ -250,7 +250,7 @@
         }
     })
     $('#reset-token').bind("click", function () {
-        $.post("https://pbd.ishpduwu.link/paintboard/gettoken", {
+        $.post("https://pbd.uwuwu.us.kg/paintboard/gettoken", {
             uid: document.getElementById('uid').value.toString(),
             paste: document.getElementById('paste').value
         }, function (resp) {
@@ -347,7 +347,7 @@
         });
     function initialPaint() {
         console.log(0)
-        $.get("https://pbd.ishpduwu.link/paintboard/board", function (resp) {
+        $.get("https://pbd.uwuwu.us.kg/paintboard/board", function (resp) {
                 for(let i=0;i<1800000;i+=3)
                 {
                     update(parseInt((i/3) % 600), parseInt((i/3)/600), "#" + resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+3].charCodeAt(0).toString(16).padStart(2,'0'));
