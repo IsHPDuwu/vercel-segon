@@ -66,7 +66,7 @@
 <header class="am-topbar am-topbar-fixed-top">
     <div class="am-container">
         <h1 class="am-topbar-brand">
-            <a href="#">LS 冬日绘板</a>
+            <a href="#">LS 冬日绘版</a>
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
                 data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
@@ -120,7 +120,7 @@
                     </p>
                     <p>禁止绘制违反法律、社会公德的图形，否则将被清除且上报网警。请大家组团时不要分享自己的 cookie，而是使用分享 Token 这种更安全的方式。分享 cookie
                         等同于分享账号，他人可以使用您的 cookie 在洛谷以您的名义进行任何操作。</p>
-                    <p>本页面部分来源于<a href="https://www.luogu.com.cn" target="_blank">官方绘板页面</a>。</p>
+                    <p>本页面部分来源于<a href="https://www.luogu.com.cn/paintboard" target="_blank">官方绘板页面</a>。</p>
                     <img src="https://pbdv.uwuwu.us.kg/liucang.jpg" alt="cang">
                 </div>
             </div>
@@ -331,6 +331,7 @@
     }
 
     getCountDown(lasttime + timelimit);
+    // $('#status-pbd').html("416");
     $.get("/status", function (resp) {
             $('#status-pbd').html(resp);
         });
@@ -349,12 +350,13 @@
                         
                 //     }
                 // });
-                $('#title').text('LS（仿洛谷）冬日绘板');
+                $('#title').text('LS 冬日绘版');
             });
     }
+    zoom(1);
     initialPaint()
     window.setInterval(initialPaint,10000);
-    initialPaint()
+    // initialPaint()
     (function () {
         $('#activity-time-start').html(getDateTime(activityStartTime, false));
         $('#activity-time-end').html(getDateTime(activityEndTime, true));
