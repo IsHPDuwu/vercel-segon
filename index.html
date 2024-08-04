@@ -66,7 +66,7 @@
 <header class="am-topbar am-topbar-fixed-top">
     <div class="am-container">
         <h1 class="am-topbar-brand">
-            <a href="#">LS 冬日绘版</a>
+            <a href="#">LS 冬日绘板</a>
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
                 data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
@@ -207,7 +207,7 @@
         localStorage.setItem('uid',document.getElementById('uid').value.toString())
         var x = parseInt(event.offsetX / scale);
         var y = parseInt(event.offsetY / scale);
-        $.post("https://pbd.uwuwu.us.kg/paintboard/paint", {
+        $.post("/paintboard/paint", {
             x: x,
             y: y,
             color: nowColor.slice(1,7),
@@ -239,7 +239,7 @@
         }
     })
     $('#reset-token').bind("click", function () {
-        $.post("https://pbd.uwuwu.us.kg/paintboard/gettoken", {
+        $.post("/paintboard/gettoken", {
             uid: document.getElementById('uid').value.toString(),
             paste: document.getElementById('paste').value
         }, function (resp) {
@@ -331,13 +331,12 @@
     }
 
     getCountDown(lasttime + timelimit);
-    // $('#status-pbd').html("416");
     $.get("/status", function (resp) {
             $('#status-pbd').html(resp);
         });
     function initialPaint() {
         console.log(0)
-        $.get("https://pbd.uwuwu.us.kg/paintboard/board", function (resp) {
+        $.get("/paintboard/board", function (resp) {
                 for(let i=0;i<1800000;i+=3)
                 {
                     update(parseInt((i/3) % 600), parseInt((i/3)/600), "#" + resp[i+1].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+2].charCodeAt(0).toString(16).padStart(2,'0')+ resp[i+3].charCodeAt(0).toString(16).padStart(2,'0'));
@@ -353,10 +352,54 @@
                 $('#title').text('LS 冬日绘版');
             });
     }
-    zoom(1);
-    initialPaint()
-    window.setInterval(initialPaint,10000);
+
+    // window.setInterval(initialPaint,10000);
     // initialPaint()
+    var ws = null;
+    function connectWs() {
+        try {
+            ws = new WebSocket('wss://pbd.uwuwu.us.kg/ws');
+        } catch (e) {
+            alert("无法连接追踪服务器");
+            return;
+        }
+        ws.binaryType = "arraybuffer";
+        ws.onopen = function () {
+            const message = new Uint8Array([0xff]);
+            ws.send(message);
+        };
+
+        ws.onmessage = function (event) {
+            const raw_message = new Uint8Array(event.data);
+            console.log(raw_message);
+
+            const [type, data] = [raw_message[0], raw_message.slice(1)];
+            console.log(type, data);
+
+            switch (type){
+                case 0xfa: {
+                    const x = data[1] * 256 + data[0];
+                    const y = data[3] * 256 + data[2];
+                    const colorR = data[4];
+                    const colorG = data[5];
+                    const colorB = data[6];
+                    update(y, x, "#" + colorR.toString(16) + colorG.toString(16) + colorB.toString(16));
+                    console.log("x: " + x + " y: " + y + " color: " + "#" + colorR.toString(16) + colorG.toString(16) + colorB.toString)
+                    break;
+                }
+                case 0xfc: {
+                    initialPaint();
+                    break;
+                }
+                case 0xfd: {
+                    initialPaint();
+                    break;
+                }
+            }
+        };
+    }
+
+    connectWs();
     (function () {
         $('#activity-time-start').html(getDateTime(activityStartTime, false));
         $('#activity-time-end').html(getDateTime(activityEndTime, true));
