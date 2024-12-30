@@ -1,12 +1,8 @@
 {
   "routes": [
     {
-      "src": "/paintboard/(.*)",
-      "dest": "https://pbd.uwuwu.us.kg/paintboard/$1"
-    },
-    {
-      "src": "/status",
-      "dest": "https://pbdss.uwuwu.us.kg"
+      "src": "/api/(.*)",
+      "dest": "https://api.paintboard.ayakacraft.com:32767/api/$1"
     }
   ]
 }
